@@ -1,0 +1,40 @@
+<html>
+
+<body>
+    <div id="teste"></div>
+    <script>
+
+    //destructuring no contexto de objetos
+
+    let produto = {
+        descricao: 'notebook',
+        preco: 2500,
+        detalhes: {
+            fabricante: 'dell',
+            modelo: 'd400'
+        }
+    }
+
+    //Para objetos utilizamos {}
+    //token (arrays) -> []
+    //token (objetos) -> {}
+
+    let { descricao, preco } = produto
+    console.log(descricao,preco)
+
+    //Nomear as variáveis com outros nomes
+    let { descricao:d, preco:p } = produto
+    console.log(d,p)
+
+    //valores default para lidar com atributos undefined
+    let { descricao:de, preco:pr = 0, desconto = 5} = produto
+    console.log(de,pr, desconto)
+
+    //Extrair atributos de objetos pertencentes a atributos do objeto
+    let{ descricao:desc, detalhes: { fabricante, modelo = 'Não informado' } } = produto
+    console.log(desc, fabricante, modelo)
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<html>
+    <body>
+        <script>
+
+            //escopos: global, função e globo
+
+            if (true) {
+                if (true) {
+                    var serie = 'The Big Bang Theory'
+                }
+                console.log('bloco: ', serie)
+            }
+
+            
+
+            function escopoFuncao() {
+
+                var serie2 = 'How I Met Your Mother'
+                console.log('funcao: ', serie)
+            }
+
+            escopoFuncao()
+
+
+
+            {
+                console.log('bloco: ', serie2)
+            }
+
+            console.log('global: ', serie)
+
+        </script>
+    </body>
+</html>

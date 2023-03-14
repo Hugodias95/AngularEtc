@@ -1,0 +1,23 @@
+<html>
+
+<body>
+    <div id="teste"></div>
+    <script>
+
+        //destructuring no contexto de operador rest
+
+        //array
+        let arr = [10,20,30,40]
+        let [ a, ...b ] = arr //primeiro vai para a, resto condensa em b
+        console.log(a,b)
+
+        //objetos
+        let obj = {a:10, b:20, c:30, d:40}
+        let { a:apelido, ...resto } = obj
+        console.log(apelido,resto)
+
+
+    </script>
+</body>
+
+</html>

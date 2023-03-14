@@ -1,0 +1,24 @@
+<html>
+
+<body>
+    <div id="teste"></div>
+    <script>
+
+        //destructuring no contexto de arrays
+
+        let frutas = ['Abacaxi', 'Uva', 'Pêra', 'Mamão']
+        // os [] do lado esquerdo significa que estamos utilizando o operador destructuring
+        let [ a, b, , d ] = frutas //cada variável recebe a extração de um índice
+        let [ x, y = 'Abacate', z, k, j = ''] = frutas //Podemos definir valor padrão
+
+        console.log(a, b, d)
+        console.log(x, y, z, k, j)
+
+        let coisas = [['Abacaxi', 'Uva', 'Pêra', 'Mamão'], ['José', 'Maria']]
+        let [,[,s]] = coisas //pula a posição 0 (frutas) e depois pula a posição 0 do segundo array
+        console.log(s)
+
+    </script>
+</body>
+
+</html>

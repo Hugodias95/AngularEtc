@@ -1,0 +1,46 @@
+<html>
+
+<body>
+    <div id="teste"></div>
+    <script>
+
+        //contexto rest -> usado para condensar parâmetros em funções ou métodos
+
+        //spread + nome qualquer
+        function soma(...param) {
+            let resultado = 0
+
+            //Para cada "valores" dentro do spread param, faça:
+            //faz a soma dos valores
+            param.forEach(valores => resultado += valores)
+            //imprime os valores em array
+            console.log(param)
+            //imprime eles separando
+            param.forEach(impresso => console.log(impresso))
+
+
+            return resultado
+        }
+
+        let x = soma(5,7,49,12,56,324,-324,982)
+        console.log('Soma dos valores de x: ' + x)
+
+        //O primeiro parâmetro virá sozinho, todos os outros serão condensados em um único parâmetro
+        function multiplicacao(m, ...n) {
+            console.log(m)
+            console.log(n)
+
+            let resultado = 0
+            n.forEach(valorSeparado => {
+                resultado += m * valorSeparado
+            })
+            return resultado
+        }
+
+        let y = multiplicacao(5,7,13,16,69,12,-39)
+        console.log('Soma dos valores de y: ' + y)
+
+    </script>
+</body>
+
+</html>

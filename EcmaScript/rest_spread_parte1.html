@@ -1,0 +1,36 @@
+<html>
+
+<body>
+    <div id="teste"></div>
+    <script>
+
+        //contexto spread -> utilizado para expandir strings, arrays e objetos dentro de outras estruturas como arrays e objetos
+
+        //string
+        let tituloArtigo = 'Como utilizar o operador rest/spread'
+        console.log(tituloArtigo)
+        //A notação "..." funciona como spread
+        console.log(...tituloArtigo)
+        //Cada caracter da string vira uma posição do array
+        console.log([...tituloArtigo])
+        //Objeto com atributos numéricos para cada caracter
+        console.log({...tituloArtigo})
+
+        //arrays
+        let listaCursos1 = ['NodeJS e MongoDB', 'Angular']
+        let listaCursos2 = ['Solid', 'Laravel']
+        let listaCompletaCursos = ['Web Completo', 'Banco de Dados', ...listaCursos1, ...listaCursos2]
+        //Se colocar apenas o nome do array ele imprime como Array(2)-número de posições
+
+        console.log(listaCompletaCursos)
+
+        //objetos
+        let pessoa = {nome: 'Pedro', idade: 32}
+        let cadastroCompleto = {endereco: 'Rua abc', ...pessoa}
+
+        console.log(cadastroCompleto)
+
+    </script>
+</body>
+
+</html>

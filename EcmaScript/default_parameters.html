@@ -1,0 +1,19 @@
+<html>
+
+<body>
+    <div id="teste"></div>
+    <script>
+
+        //parâmetro padrão salvo dentro do escopo do método
+        function contarUmaHistoria(personagem = 'Tutu', atividade = 'ccomer ração', dono = 'Hugo') {
+            return `Era uma vez um cachorro chamado ${personagem}, ele adorava ${atividade}, seu dono era o ${dono} e eles viveram felizes para sempre`
+        }
+
+        //Quando o parâmetro é setado ao chamar o método, ele assume o lugar do default  
+        document.getElementById('teste').innerHTML = contarUmaHistoria(undefined, 'enterrar os brinquedos', 'Joãozim')
+        //Se colocoar undefined ele assume o default novamente, assim ele respeita a ordem dos parâmetros, mesmo que não seja passado nenhum 
+
+    </script>
+</body>
+
+</html>

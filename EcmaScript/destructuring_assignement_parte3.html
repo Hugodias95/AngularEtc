@@ -1,0 +1,43 @@
+<html>
+
+<body>
+    <div id="teste"></div>
+    <script>
+
+        //destructuring no contexto de funções
+
+        //arrays
+        let arr = [10, 20, 30, 40]
+
+        //function teste([ a, b ]) { //destructuring diréto do na função
+        //function teste([ a, b, , c ]) { //pular valores
+        function teste([a, b, , c, d = 0]) { //parâmetro padrão
+            console.log(a, b, c, d)
+        }
+
+        //teste(arr[0],arr[1])
+        teste(arr)
+
+        //objetos
+        let obj = {
+            a: 10,
+            b: 20,
+            c: 30,
+            d: 40
+        }
+
+        //function teste2 ({a,b}) {
+        function teste2({ a, b:bzim, t = 100 }) { //apelidos e parâmetro padrão
+
+            console.log(a, bzim, t)
+        }
+
+        //teste2(obj.a,obj.b)
+        teste2(obj)
+
+
+
+    </script>
+</body>
+
+</html>
