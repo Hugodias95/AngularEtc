@@ -1,0 +1,31 @@
+<html>
+
+<body>
+    <div id="teste"></div>
+    <script>
+
+        //No caso de uma função generator com o "*", precisamos informar qual parte do código queremos executar
+        function* testeGenerator() {
+            yield console.log('Teste 1')
+            yield console.log('Teste 2') //irá executar tudo antes + a linha em questão
+            yield console.log('Teste 3')
+
+            return 'Teste 4'
+        }
+
+        let meuGenerator = testeGenerator() //recebe objeto iterator
+        console.log(meuGenerator)
+
+        meuGenerator.next()
+        console.log('---esperando próximo next---')
+        meuGenerator.next()
+        console.log('---esperando próximo next---')
+        meuGenerator.next()
+        console.log('---esperando próximo next---')
+        console.log(meuGenerator.next())
+        //retorno do objeto com dois atributos com value: valor retornado, done: estado da execução da generator
+
+    </script>
+</body>
+
+</html>

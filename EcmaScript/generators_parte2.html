@@ -1,0 +1,79 @@
+<html>
+
+<body>
+    <div id="teste"></div>
+    <script>
+
+        function* conversar() {
+        //Função generator possui escopo próprio
+        //opcao
+
+            //1 bloco
+            let opcao = yield 'E ai, tudo bem?'
+            //O próximo next irá receber um parâmetro
+            //deve ser indicado
+
+            //Recebe o parâmetro enviado do next
+
+            //2 bloco
+            if (opcao == 'sim') {
+                yield 'Ótimo, fico feliz'
+
+                opcao = yield 'Como eu posso te ajudar? Quer uma piada para começar?'
+                //Novamente próxima etapa receberá parâmetro
+
+                if(opcao == 'sim' ) {
+
+                    fetch('dados/piadas.json') //requisição http
+                        .then(resposta => resposta.json())
+                        .then(piadas => {
+                            let piada = piadas[Math.floor(Math.random() * 10)]
+                            console.log(piada.piada)
+
+                            setTimeout(() => {
+                                console.log(piada.resposta)
+                                console.log('kkkkk, muito boa')
+                            }, 4000)
+                        })
+
+                        yield 'Digite 1 para compras, 2 para vendas ou 3 para falar com um atendente'
+
+
+                } else {
+                    yield 'Digite 1 para compras, 2 para vendas ou 3 para falar com um atendente'
+                }
+
+            } else {
+                yield 'Respire fundo e tenha paciência'
+
+                yield 'Digite 1 para compras, 2 para vendas ou 3 para falar com um atendente'
+            }
+
+            return 'Atendimento finalizado'
+            
+        }
+
+        let conversa = conversar() //objeto iterator
+
+        function acao() {
+
+            let resposta = document.getElementById('resposta').value
+
+            let iteracao = conversa.next(resposta)
+            console.log(iteracao)
+
+            if(iteracao.done == true) {
+                document.getElementById('teste').style.display = 'none'
+            }
+
+        }
+
+    </script>
+
+    <div id="teste">
+        <button type="button" onclick="acao()">Avançar</button>
+        Resposta: <input type="text" id="resposta">
+    </div>
+</body>
+
+</html>
