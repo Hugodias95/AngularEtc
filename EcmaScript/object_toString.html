@@ -1,0 +1,28 @@
+<html>
+
+<body>
+
+    <script>
+
+        class Carro {
+            constructor(marca,modelo,ano) {
+                this.marca = marca,
+                this.modelo = modelo,
+                this.ano = ano
+            }
+            toString() {
+                return `Carro da marca ${this.marca}, modelo ${this.modelo} e ano ${this.ano}`
+            }
+        }
+
+
+        //[object Type] quando o toString não é sobrescrito
+        let carro = new Carro('Jeep', 'Renegade', 2021)
+
+        console.log(carro.toString())
+
+    </script>
+
+</body>
+
+</html>
