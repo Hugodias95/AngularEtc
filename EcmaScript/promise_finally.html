@@ -1,0 +1,32 @@
+<html>
+
+<body>
+
+    <script>
+
+        let p = new Promise((resolve,reject) => {
+
+            if (false) {
+                reject('Rejeitada')
+            }
+
+            resolve('Resolvida')
+
+        }).then((resultado) => {
+            console.log(resultado)
+        }).catch((reijeitado) => {
+            console.log(reijeitado)
+        }).finally(() => {
+            console.log('Fluxo se rejeitado ou resolvido')
+        }).then(() => {
+            console.log('Then após o finally')
+        }).then(() => {
+            console.log('Then após o finally 2')
+        })
+
+
+    </script>
+
+</body>
+
+</html>
