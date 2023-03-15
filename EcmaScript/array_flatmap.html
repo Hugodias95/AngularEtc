@@ -1,0 +1,35 @@
+<html>
+
+<body>
+
+    <script>
+
+        //Flatmap percorre os elementos de um array e o resultado é nivelado
+
+        let nomes = [
+            'João,José,Maria',
+            'Sandra,Samara,Samantha',
+            'Antonia,Andressa,Angelica'
+        ]
+
+        console.log(nomes)
+
+        //pega o array e separa cada elemento em um array, pela "," e monta um array naquela posição
+        let nomesMap = nomes.map(item => {
+            return item.split(',')
+        })
+
+        console.log(nomesMap)
+
+        //pega o array e separa cada elemento em um array, pela "," e nivela todos em um mesmo array com 1 nível de profundidade
+        let nomesFlatMap = nomes.flatMap(item => {
+            return item.split(',')
+        })
+
+        console.log(nomesFlatMap)
+
+    </script>
+
+</body>
+
+</html>
