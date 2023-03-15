@@ -1,0 +1,61 @@
+<html>
+
+<body>
+
+    <script>
+
+        let objeto = {
+            nome: 'Hugo Dias',
+            profissional: {
+                site: 'hugodias.net.br',
+                profissao: 'Estagiário'
+            },
+            hobbies: [
+                { id: 1, hobby: 'Fazer trilhas'},
+                { id: 2, hobby: 'Dormir'},
+            ],
+            pais: 'Brasil'
+        }
+
+        console.log(objeto)
+        //descritores de propriedas
+        console.log(Object.getOwnPropertyDescriptors(objeto))
+
+        //Descritor writable? quando definido como false indica que o valor da propriedade não poderá ser modificada
+
+        Object.defineProperty(objeto, 'nome', {
+            value: 'Hugo Dias',
+            writable: false
+        })
+
+        //Descritor enumerable? quando definido como false a propriedade em questão não é exibida em laços de repetição
+
+        for(let propriedade in objeto) {
+            console.log(propriedade, objeto[propriedade])
+        }
+
+        Object.defineProperty(objeto, 'hobbies', {
+            enumerable: false
+        })
+        Object.defineProperty(objeto, 'profissional', {
+            enumerable: false
+        })
+
+        console.log('-------------------------')
+        for(let propriedade in objeto) {
+            console.log(propriedade, objeto[propriedade])
+        }
+
+        //Descritor configurable? quando definido como false indica que a propriedade não pode ser deletada e não podemos mais modificar os descritores, exceto de writer para false
+
+        Object.defineProperty(objeto, 'pais', {
+            configurable: false
+        })
+
+        console.log(Object.getOwnPropertyDescriptors(objeto))
+
+    </script>
+
+</body>
+
+</html>
