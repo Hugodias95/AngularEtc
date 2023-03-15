@@ -1,0 +1,33 @@
+<html>
+
+<body>
+
+    <script>
+    //Encadeamento opcional. Verifica a existência de um atributo dentro de um objeto antes de disparar a validação javaScript
+
+        //orçamento pessoal
+        let obj = {
+            2021: {
+                janeiro: {
+                    pessoal: 2000,
+                    casa: 1500,
+                    investimento: 1000
+                },
+                fevereiro: {
+                    pessoal: 1800,
+                    casa: 1600,
+                    investimento: 700
+                }
+            }
+        }
+
+        console.log(obj['2021'].janeiro.pessoal)
+        console.log(obj['2021'].fevereiro.pessoal)
+        //com a '?', caso for undefined não gera erro
+        console.log(obj['2021'].marco?.pessoal)
+
+    </script>
+
+</body>
+
+</html>
