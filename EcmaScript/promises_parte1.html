@@ -1,0 +1,40 @@
+<html>
+
+<body>
+    <script>
+
+        //requisições http (provcessamentos assíncronos como chamada na API e dependendo da resposta acontece uma ação)
+        let resposta = {}
+
+        let promessa = new Promise((resolve, reject) => {
+            try {
+
+                //throw new error('Opa, houve um erro')
+
+                setTimeout(() => {
+                    resposta = { dados: { msg: 'Recuperamos os dados com sucesso' } }
+                    resolve('Sucesso')
+                }, 3000)
+
+
+            } catch (error) {
+
+                setTimeout(() => {
+                    reject(error)
+                }, 3000)
+
+            }
+        })
+
+        console.log(promessa)
+
+        setTimeout(() => {
+            console.log(promessa)
+            console.log(resposta)
+        }, 5000)
+
+    </script>
+
+</body>
+
+</html>
