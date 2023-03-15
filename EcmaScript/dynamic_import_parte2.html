@@ -1,0 +1,44 @@
+<html>
+
+<body>
+
+    <button id="btnSaudacao">Saudação</button>
+    <hr>
+    <input type="text" id="cep" placeholder="CEP">
+    <button id="btnCEP">Consultar CEP</button>
+
+    <script type="module">//type definido para conseguirmos trabalhar com modulos
+        //carregamento estático/antecipado
+        //import { saudacao, getEnderecoByCEP } from './import/lib.mjs'
+
+        //usa o # por ID
+        document.querySelector('#btnSaudacao').addEventListener('click', () => {
+
+            //Dynamic import retorna uma promise do módulo para que quando ele for carregado, a gente tome uma ação
+            import('./import/lib.mjs')
+                .then(module => console.log(module.saudacao()))
+                //Ao recuperar o módulo, precisamos utilizar o parâmetro
+        })
+
+        document.querySelector('#btnCEP').addEventListener('click', () => {
+
+            let cep = document.querySelector('#cep').value
+
+            if (cep.length == 8) {
+
+                import('./import/lib2.mjs')
+                    .then(module => {
+                        module.getEnderecoByCEP(cep)
+                            .then(dados => console.log(dados))
+                    })
+
+            }
+        })
+
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+<html>
+
+<body>
+
+
+    <script type="module">//type definido para conseguirmos trabalhar com modulos
+        //carregamento estático/antecipado
+        import { saudacao, getEnderecoByCEP } from './import/lib.mjs'
+
+        console.log(saudacao())
+        getEnderecoByCEP('74672450')
+            .then(dados => console.log(dados))
+    </script>
+
+</body>
+
+</html>
