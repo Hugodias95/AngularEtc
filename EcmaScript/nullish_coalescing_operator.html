@@ -1,0 +1,40 @@
+<html>
+
+<body>
+
+    <script>
+
+        //Testando com o operador lógico OR
+        let teste1 = null || 'Valor a direita'
+        let teste2 = 0 || 'Valor a direita'
+        let teste3 = undefined || 'Valor a direita'
+        let teste4 = '' || 'Valor a direita'
+        let teste5 = 'Valor a esquerda' || 'Valor a direita'
+        //Em todos os casos não temos valores utilizáveis, exceto no teste5
+
+        console.log(teste1) //VD
+        console.log(teste2) //VD 
+        console.log(teste3) //VD 
+        console.log(teste4) //VD
+        console.log(teste5) //VE
+
+        console.log('------Nullish--------')
+
+        //Testando com o operador Nullish Coalescing
+        let teste6 = null ?? 'Valor a direita'
+        let teste7 = 0 ?? 'Valor a direita'
+        let teste8 = undefined ?? 'Valor a direita'
+        let teste9 = '' ?? 'Valor a direita'
+        let teste10 = 'Valor a esquerda' ?? 'Valor a direita'
+
+        console.log(teste6) //VD
+        console.log(teste7) //0 
+        console.log(teste8) //VD 
+        console.log(teste9) //''
+        console.log(teste10) //VE
+
+    </script>
+
+</body>
+
+</html>
