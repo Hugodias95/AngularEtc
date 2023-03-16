@@ -1,0 +1,47 @@
+<html>
+
+<body>
+
+    <script>
+
+        //funciona como uma sintax abreviada para testar o valor da prórpia variável durante o processo da atribuição
+        let v1 = 10
+        let v2 = null //null ou undefined
+
+        //logical nullish assignment
+        v1 ??= 50 //se for nulo ou undefined, o valor à direita será atribuído, senão, nenhum valor será atribuído
+        v2 ??= 20
+
+        console.log(v1)
+        console.log(v2)
+
+        //---------------------------------------------------------------
+
+        let carro = {
+            marca: 'Susuki'
+        }
+
+        carro.marca ??= 'Chevrolet'
+        carro.modelo ??= 'Intruder'
+
+        console.log(carro.marca)
+        console.log(carro.modelo) //Modelo não estava definido no escopo do objeto, mas utilizando o logical nullish assignment ele irá receber o modelo definido no método
+
+        //---------------------------------------------------------------
+
+        let arr = ['uva', 'joão', null, undefined, 5, []]
+
+        arr.forEach((item/*valor em si*/, indice) => {
+            arr[indice] ??= 'Não informado'
+        })
+
+        console.log(arr)
+
+
+
+
+    </script>
+
+</body>
+
+</html>
