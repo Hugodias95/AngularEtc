@@ -1,0 +1,39 @@
+<html>
+
+<body>
+
+    <script>
+
+        const p1 = new Promise((resolve,reject) => {
+            setTimeout(() => {
+                resolve('p1 resolvida')
+            }, 3000);
+        })
+
+        const p2 = new Promise((resolve,reject) => {
+            setTimeout(() => {
+                reject('p2 rejeitada')
+            }, 2000);
+        })
+
+        const p3 = new Promise((resolve,reject) => {
+            setTimeout(() => {
+                resolve('p3 resolvida')
+            }, 4000);
+        })
+
+        let promises = [p1,p2,p3]
+
+        Promise.any(promises) //retorna uma promise, primeira resolvida e desconsidera reject
+            .then((resolvida) => {
+                console.log(resolvida)
+            })
+            .catch((erro) => {
+                console.log(erro)
+            })
+
+    </script>
+
+</body>
+
+</html>
