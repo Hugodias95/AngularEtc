@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class TentativasComponent {
 
+  public coracaoVazio: string = '<../../assets/coracao_vazio.png'
+  public coracaoCheio: string = '<../../assets/coracao_cheio.png'
+  //Property bind, atributo de um determinado elemento HTML seja estabelecido em uma variável do componente
+
 }
