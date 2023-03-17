@@ -2,10 +2,10 @@
     <div>
         <div class="row">
             <div class="col-sm-6">
-                <app-progresso></app-progresso>
+                <app-progresso [progresso]="progresso"></app-progresso>
             </div>
             <div class="col-sm-6">
-                <app-tentativas></app-tentativas>
+                <app-tentativas [tentativas]="tentativas"></app-tentativas>
             </div>
         </div>
 
@@ -15,14 +15,14 @@
                 <p>{{ rodadaFrase.fraseEN }}</p>
 
                 <div class="form-group">
-                    <textarea class="form-control" rows="3" (input)="atualizaResposta($event)"></textarea>
+                    <textarea class="form-control" rows="3" (input)="atualizaResposta($event)"
+                    [value]="resposta"></textarea>
                 </div>
             </div>
         </div>
-        <br>
         <div class="row">
             <div class="col">
-                <div class="d-flex justify-content-end"><button type="button" class="btn btn-primary" (click)="verificarResposta()">Verificar</button>
+                <div class="d-flex justify-content-end botaoVerificar"><button type="button" class="btn btn-primary" (click)="verificarResposta()">Verificar</button>
                 </div>
 
             </div>

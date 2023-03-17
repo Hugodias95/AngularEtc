@@ -1,6 +1,18 @@
 
 <div class="d-flex justify-content-end">
+
+    <img class="coracao" *ngFor="let coracao of coracoes" [src]="coracao.exibeCoracao()"/>
+
+</div>
+
+
+<!--
+ESTÁTICO
+<div class="d-flex justify-content-end">
     <img class="coracao" [src]="coracaoVazio"/>
     <img class="coracao" [src]="coracaoCheio"/>
     <img class="coracao" [src]="coracaoCheio"/>
+    [src] PROPERTY BIND
 </div>
+
+-->
