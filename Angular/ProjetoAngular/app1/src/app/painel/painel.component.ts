@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, OnDestroy } from '@angular/core';
 import { Frase } from '../shared/frase.model';
 import { FRASES } from './frases-mock';
 
@@ -22,9 +22,15 @@ export class PainelComponent {
 
   public tentativas: number = 3
 
+  @Output() public encerrarJogo: EventEmitter<string> = new EventEmitter()
+  //cria um atributo associado à instância da classe event emitter e decore esse atributo para que ele possa ser exponto para componentes pai
+
   constructor() {
 
     this.atualizaRodada()
+  }
+
+  ngOnDestroy() {
   }
 
   public atualizaResposta(resposta: Event): void {
@@ -36,8 +42,8 @@ export class PainelComponent {
     if (this.rodadaFrase.frasePT == this.resposta) {
 
       //Verificar se rodada é idêntico a 4
-      if(this.rodada ===4) {
-        alert('Concluiu as traduções com sucesso!')
+      if (this.rodada === 4) {
+        this.encerrarJogo.emit('Vitória')
       }
 
       //trocar pergunta da rodada e atualiza a rodada
@@ -52,7 +58,7 @@ export class PainelComponent {
       this.tentativas--
 
       if (this.tentativas === -1) {
-        alert('Você está sem tentativas!')
+        this.encerrarJogo.emit('Derrota')
       }
 
     }
