@@ -1,55 +1,73 @@
+import { Oferta } from "./shared/oferta.model"
+import { HttpClient } from "@angular/common/http"
+import { Injectable } from "@angular/core"
+import 'rxjs/operators'
+import { firstValueFrom } from "rxjs"
+
+@Injectable()
 export class OfertasService {
 
-    public ofertas: Array<any> = [{
-        id: 1,
-        categoria: "restaurante",
-        titulo: "Super Burger",
-        descricao_oferta: "Rodízio de Mini-hambúrger com opção de entrada.",
-        anunciante: "Original Burger",
-        valor: 29.90,
-        destaque: true,
-        imagens: [
-            { url: "/assets/ofertas/1/img1.jpg" },
-            { url: "/assets/ofertas/1/img2.jpg" },
-            { url: "/assets/ofertas/1/img3.jpg" },
-            { url: "/assets/ofertas/1/img4.jpg" }
-        ]
-    },
-    {
-        id: 2,
-        categoria: "restaurante",
-        titulo: "Cozinha Mexicana",
-        descricao_oferta: "Almoço ou Jantar com Rodízio Mexicano delicioso.",
-        anunciante: "Mexicana",
-        valor: 32.90,
-        destaque: true,
-        imagens: [
-            { url: "/assets/ofertas/2/img1.jpg" },
-            { url: "/assets/ofertas/2/img2.jpg" },
-            { url: "/assets/ofertas/2/img3.jpg" },
-            { url: "/assets/ofertas/2/img4.jpg" }
-        ]
+    constructor(private http: HttpClient) { }
 
-    },
-    {
-        id: 4,
-        categoria: "diversao",
-        titulo: "Estância das águas",
-        descricao_oferta: "Diversão garantida com piscinas, trilhas e muito mais.",
-        anunciante: "Estância das águas",
-        valor: 31.90,
-        destaque: true,
-        imagens: [
-            { url: "/assets/ofertas/3/img1.jpg" },
-            { url: "/assets/ofertas/3/img2.jpg" },
-            { url: "/assets/ofertas/3/img3.jpg" },
-            { url: "/assets/ofertas/3/img4.jpg" },
-            { url: "/assets/ofertas/3/img5.jpg" },
-            { url: "/assets/ofertas/3/img6.jpg" }
-        ]
-    }]
 
-    public getOfertas(): Array<any> {
-        return this.ofertas
+    public getOfertas(): Promise<Oferta[]> {
+        //Efetuar uma requisição http
+        //Observable to Promise
+        return firstValueFrom(this.http.get('http://localhost:3000/ofertas?destaque=true'))
+            .then((resposta: any) => resposta)
+        //Retornar uma promessa contendo Oferta[]
     }
+
+    public getOfertaPorCategoria(categoria: string): Promise<Oferta[]> {
+        return firstValueFrom(this.http.get(`http://localhost:3000/ofertas?categoria=${categoria}`))
+            .then((resposta: any) => resposta)
+    }
+
+    public getOfertaPorId(id: number): Promise<Oferta> {
+        return firstValueFrom(this.http.get(`http://localhost:3000/ofertas?id=${id}`))
+            .then((resposta: any) => resposta.shift())
+    }
+
+
+
+
+
+
+
+
+
+    /*public getOfertas2(): Promise<Oferta[]> {
+        return new Promise((resolve, reject) => {
+            //algum tipo de processamento que ao finalizar chama a função resolve ou reject
+            let deu_certo: boolean = true
+
+            if(deu_certo) {
+                setTimeout(() => {
+                    resolve(this.ofertas)
+                }, 3000);
+                
+            } else {
+                reject({codigo_erro: 404, mensagem_erro: 'Servidor não encontrado'})
+            }
+        })
+        //exemplo de usos para o then que podem acontecer antes de retornar o valore para a requisição do ngOnInit do HomeComponent
+        .then((ofertas: Oferta[]) => {
+            //fazer alguma tratativa
+            console.log('Primeiro then')
+            return ofertas
+        })
+        .then((ofertas: Oferta[]) => {
+            //fazer alguma outra tratativa
+            console.log('Segundo then')
+            return new Promise((resolve2,reject2) => {
+                setTimeout(() => {
+                    resolve2(ofertas)
+                }, 5000);
+            })
+        })
+        .then((ofertas: Oferta[]) => {
+            console.log('Terceiro then executado após 5 segundos pois estava aguardando uma Promise ser resolvida')
+            return ofertas
+        })
+    }*/
 }
