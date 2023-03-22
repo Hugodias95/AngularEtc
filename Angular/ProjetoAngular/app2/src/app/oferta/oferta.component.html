@@ -23,7 +23,7 @@
           <div class="col text-center">
             <p>Por apenas</p>
           </div>
-          
+
         </div>
 
         <div class="row">
@@ -37,10 +37,29 @@
             <button type="button" class="btn btn-warning btn-lg">Adicionar ao carrinho</button>
           </div>
         </div>
-          
+
       </div>
 
     </div>
 
+  </div>
+
+  <div class="row" style="margin-top: 25px; margin-bottom: 150px;">
+    <div class="col">
+    </div>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link " routerLinkActive="" data-toggle="tab" routerLink="como-usar" role="tab" aria-controls="home"
+          aria-selected="true">Como usar</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="" data-toggle="tab" routerLink="onde-fica" role="tab">Onde fica?</a>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <router-outlet>
+
+      </router-outlet>
+    </div>
   </div>
 </div>

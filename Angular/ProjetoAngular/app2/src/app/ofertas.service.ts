@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http"
 import { Injectable } from "@angular/core"
 import 'rxjs/operators'
 import { firstValueFrom } from "rxjs"
+import { URL_API } from "./app.api"
 
 @Injectable()
 export class OfertasService {
@@ -13,19 +14,29 @@ export class OfertasService {
     public getOfertas(): Promise<Oferta[]> {
         //Efetuar uma requisição http
         //Observable to Promise
-        return firstValueFrom(this.http.get('http://localhost:3000/ofertas?destaque=true'))
+        return firstValueFrom(this.http.get(`${URL_API}/ofertas?destaque=true`))
             .then((resposta: any) => resposta)
         //Retornar uma promessa contendo Oferta[]
     }
 
     public getOfertaPorCategoria(categoria: string): Promise<Oferta[]> {
-        return firstValueFrom(this.http.get(`http://localhost:3000/ofertas?categoria=${categoria}`))
+        return firstValueFrom(this.http.get(`${URL_API}/ofertas?categoria=${categoria}`))
             .then((resposta: any) => resposta)
     }
 
     public getOfertaPorId(id: number): Promise<Oferta> {
-        return firstValueFrom(this.http.get(`http://localhost:3000/ofertas?id=${id}`))
+        return firstValueFrom(this.http.get(`${URL_API}/ofertas?id=${id}`))
             .then((resposta: any) => resposta.shift())
+    }
+
+    public getComoUsarOfertaPorId(id: number): Promise<string> {
+        return firstValueFrom(this.http.get(`${URL_API}/como-usar?id=${id}`))
+            .then((resposta: any) => resposta.shift().descricao)
+    }
+
+    public getOndeFicaOfertaPorId(id: number): Promise<string> {
+        return firstValueFrom(this.http.get(`${URL_API}/onde-fica?id${id}`))
+            .then((resposta: any) => resposta.shift().descricao)
     }
 
 
