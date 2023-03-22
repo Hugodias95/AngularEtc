@@ -15,7 +15,8 @@ export class ComoUsarComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private ofertasService: OfertasService
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     //console.log('ID da rota pai', this.route.parent.snapshot.params['id'])
