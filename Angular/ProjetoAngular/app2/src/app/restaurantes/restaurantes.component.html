@@ -16,7 +16,10 @@
         <div class="row">
           <h4>{{ restaurante.titulo }}</h4>
         </div>
-
+        <!--        
+          <div class="row">
+          <h4>{{ dataTeste | date:'dd/MM/yyyy'  }}</h4>
+        </div>-->
         <div class="row">
           <h5>{{ restaurante.descricao_oferta }}</h5>
         </div>
@@ -26,7 +29,7 @@
         </div>
 
         <div class="row">
-          <p>R$ {{ restaurante.valor }}</p>
+          <p>{{ restaurante.valor | currency}}</p>
         </div>
 
         <div class="row">

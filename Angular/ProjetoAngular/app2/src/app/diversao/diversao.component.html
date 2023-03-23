@@ -27,7 +27,7 @@
         </div>
 
         <div class="row">
-          <p>R$ {{ diversao.valor }}</p>
+          <p>{{ diversao.valor | currency: 'BRL' }}</p>
         </div>
 
         <div class="row">
