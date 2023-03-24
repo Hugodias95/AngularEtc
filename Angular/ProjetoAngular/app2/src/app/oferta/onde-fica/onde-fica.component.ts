@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { OfertasService } from 'src/app/ofertas.service';
 
 @Component({
@@ -21,8 +21,15 @@ export class OndeFicaComponent implements OnInit {
     //console.log('ID da rota pai', this.route.parent.snapshot.params['id'])
     //acessa parâmetros do sistema de roteamento root (pai)
 
-    this.ofertasService.getOndeFicaOfertaPorId(this.route.parent.snapshot.params['id'])
-      .then((descricao: any) => this.ondeFica = descricao)
+    this.route.parent.params.subscribe((parametrosDaRota: Params) => {
+      
+      this.ofertasService.getOndeFicaOfertaPorId(parametrosDaRota['id'])
+        .then((descricao: string) => {
+          this.ondeFica = descricao})
+
+    })
+
+
   }
 
 }

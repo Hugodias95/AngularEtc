@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { OfertasService } from '../ofertas.service';
 import { Oferta } from '../shared/oferta.model';
 import { Observable, Observer, Subscription } from 'rxjs';
@@ -23,14 +23,21 @@ export class OfertaComponent implements OnInit, OnDestroy {
     private ofertasService: OfertasService) { }
 
   ngOnInit() {
-    this.ofertasService.getOfertaPorId(this.route.snapshot.params['id'])
+    
+    //Se inscreve nos parâmetro do route(ActivatedRoute) para informar como ele poderá tratar o disparo de eventos em sua stream
+    this.route.params.subscribe((parametrosDaRota: Params) => {
+      
+      this.ofertasService.getOfertaPorId(parametrosDaRota['id'])
       .then((oferta: Oferta) => {
         this.oferta = oferta
       })
+      
+    })
+    
+
 
     //Cria o observável com o intervalo de tempo de 500 milisegundos
     this.tempoObservableSubscription = interval(2000).subscribe((intervalo: number) => {
-      console.log(intervalo)
     })
     //Cria o observador que se inscreve no observável e recupera seus dados
 

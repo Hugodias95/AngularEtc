@@ -12,7 +12,6 @@ import { Oferta } from '../shared/oferta.model';
 export class TopoComponent implements OnInit {
 
   public ofertas: Observable<Oferta[]>
-  public ofertas2: Oferta[]
 
   private subjectPesquisa: Subject<string> = new Subject<string>()
 
@@ -25,7 +24,6 @@ export class TopoComponent implements OnInit {
         debounceTime(1000),
         distinctUntilChanged(),
         switchMap((termo: string) => {
-          console.log('Requisição http para api')
 
           if (termo.trim() === '') {
             //retornar um observable de array de ofertas vazio
@@ -36,26 +34,26 @@ export class TopoComponent implements OnInit {
         })),
 
       catchError((erro: any) => {
-        console.log(erro)
         return of<Oferta[]>([])
       })
 
-    this.ofertas.subscribe((ofertas: Oferta[]) => {
+    /*this.ofertas.subscribe((ofertas: Oferta[]) => {
       this.ofertas2 = ofertas
       console.log(ofertas)
       //O subscribe traz os dados que ele observa e joga para o array ofertas2
-    })
+    })*/
 
   }
 
 
 
   public pesquisa(termoDeBusca: string): void {
-    console.log('Keyup caracter: ', termoDeBusca)
     this.subjectPesquisa.next(termoDeBusca)
-
   }
 
+  public limpaPesquisa(): void {
+    this.subjectPesquisa.next('')
+  }
 
 
 

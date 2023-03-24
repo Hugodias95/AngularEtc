@@ -4,9 +4,9 @@ import {Pipe} from '@angular/core'
     name: 'descricaoReduzida'
 })
 export class DescricaoReduzida {
-    transform(texto: string): string {
-        if (texto.length > 15) {
-            return texto.substring(0,15) + '... '
+    transform(texto: string, truncarEm: number): string {
+        if (texto.length > truncarEm) {
+            return texto.substring(0,truncarEm) + '... '
         }
 
         return texto
